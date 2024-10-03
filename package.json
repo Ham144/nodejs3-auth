@@ -1,0 +1,47 @@
+{
+	"name": "nodejs3",
+	"version": "1.2.0",
+	"description": "i want to be great at backend",
+	"main": "main.js",
+	"type": "module",
+	"directories": {
+		"doc": "docs"
+	},
+	"scripts": {
+		"test": "jest -i",
+		"be": "nodemon src/main.js"
+	},
+	"jest": {
+		"transform": {
+			"^.+\\.[t|j]sx?$": "babel-jest"
+		}
+	},
+	"keywords": [
+		"ham",
+		"backend",
+		"nodejs"
+	],
+	"author": "ham yafizham",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/preset-env": "^7.25.4",
+		"@types/bcrypt": "^5.0.2",
+		"@types/express": "^4.17.21",
+		"@types/supertest": "^6.0.2",
+		"@types/winston": "^2.4.4",
+		"babel-jest": "^29.7.0",
+		"nodemon": "^3.1.7",
+		"prisma": "^5.19.1",
+		"supertest": "^7.0.0"
+	},
+	"dependencies": {
+		"@prisma/client": "^5.19.1",
+		"@types/joi": "^17.2.3",
+		"@types/uuid": "^10.0.0",
+		"bcrypt": "^5.1.1",
+		"express": "^4.19.2",
+		"joi": "^17.13.3",
+		"uuid": "^10.0.0",
+		"winston": "^3.14.2"
+	}
+}
