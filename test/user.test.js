@@ -1,27 +1,31 @@
 import supertest from "supertest";
 import { web } from "../src/application/web.js";
-import { prisma } from "../src/application/database";
+import { prisma } from "../src/application/database.js";
 import { logger } from "../src/application/logging.js";
 import { createTestUserExample, removeTestUser } from "./test-util.js";
 
 //register user test
-describe('POST /api/users', async () => {
+describe('POST /api/users', () => {
 
     afterEach(async () => {
         await removeTestUser()
     })
 
-    const result = await supertest(web)
-        .post("/api/users")
-        .send({
-            username: "ham144",
-            password: "password",
-            name: "yafizham"
-        })
-    expect(result.status).toBe(200)
-    expect(result.body.username).toBe("ham144")
-    expect(result.body.name).toBe("yafizham")
-    expect(result.body.password).toBeUndefined()
+    it('should should register user username ham144', async () => {
+        const result = await supertest(web)
+            .post("/api/users")
+            .send({
+                username: "ham144",
+                password: "password",
+                name: "yafizham"
+            })
+        expect(result.status).toBe(200)
+        expect(result.body.username).toBe("ham144")
+        expect(result.body.name).toBe("yafizham")
+        expect(result.body.password).toBeUndefined()
+
+    });
+
 
     it('should reject if the request is invalid', async () => {
         const result = await supertest(web)
@@ -127,6 +131,11 @@ describe('PATCH /api/users/current', () => {
                     name: "new yafizham",
                     password: "password"
                 })
+                .send({
+                    username: "ham144",
+                    name: "new yafizham",
+                    password: "password"
+                })
 
             expect(result.status).toBe(200)
             expect(result.body.username).toBe("ham144")
@@ -138,5 +147,5 @@ describe('PATCH /api/users/current', () => {
         }
     });
 
-
 });
+

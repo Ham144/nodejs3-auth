@@ -19,3 +19,12 @@ export const createTestUserExample = async () => {
         }
     })
 }
+
+export const getTestUserExmaple = async () => {
+    const result = await prisma.user.findUnique({
+        where: {
+            username: username
+        }
+    })
+    return result
+}

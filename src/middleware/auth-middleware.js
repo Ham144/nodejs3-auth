@@ -1,6 +1,6 @@
-import { prisma } from "../application/database"
+import { prisma } from "../application/database.js"
 
-export const authMidleware = async (req, res, next) => {
+const authMidleware = async (req, res, next) => {
     const token = req.get('Authorization')
     if (!token) {
         return res.status(401).json({
@@ -26,3 +26,4 @@ export const authMidleware = async (req, res, next) => {
     }
 
 }
+export default authMidleware
